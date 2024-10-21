@@ -13,10 +13,14 @@ void draw_status_bar(cairo_t *cr, int width, int height){
 }
 
 void *glib(void *arg) {
-    GMainLoop *loop = g_main_loop_new(NULL, FALSE);
+    GMainContext *context = g_main_context_new();
+    g_main_context_push_thread_default(context);
+    GMainLoop *loop = g_main_loop_new(context, FALSE);
     battery();
     g_main_loop_run(loop);
     g_main_loop_unref(loop);
+    g_main_context_pop_thread_default(context);
+    g_main_context_unref(context);
     return NULL;
 }
 
