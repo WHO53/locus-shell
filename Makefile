@@ -2,7 +2,7 @@ NAME=locus-shell
 BIN=${NAME}
 SRC=.
 
-PKGS = locus libnm 
+PKGS = locus libnm upower-glib
 
 LOCUS_SHELL_SOURCES += $(wildcard $(SRC)/*.c) $(wildcard $(SRC)/**/*.c)
 LOCUS_SHELL_HEADERS += $(wildcard $(SRC)/*.h) $(wildcard $(SRC)/**/*.h)

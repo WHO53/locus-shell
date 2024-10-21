@@ -1,5 +1,9 @@
 #include <locus.h>
 #include "wifi/wifi.h"
+#include "battery/battery.h"
+#include <glib.h>
+#include <stdio.h>
+#include <string.h>
 
 void draw_status_bar(cairo_t *cr, int width, int height){
     cairo_set_source_rgba(cr, 0.1, 0.1, 0.1, 1);
@@ -8,10 +12,21 @@ void draw_status_bar(cairo_t *cr, int width, int height){
     draw_wifi_icon(cr, (width * 3) / 100, (height * 80) / 100, 10, 10);
 }
 
-int main(){
+void *glib(void *arg) {
+    GMainLoop *loop = g_main_loop_new(NULL, FALSE);
+    battery();
+    g_main_loop_run(loop);
+    g_main_loop_unref(loop);
+    return NULL;
+}
+
+int main(int argc, char *argv[]){
     Locus app;
     locus_init(&app, 100, 2);
     locus_create_layer_surface(&app, ZWLR_LAYER_SHELL_V1_LAYER_TOP, ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP);
     locus_set_draw_callback(&app, draw_status_bar);
+    GThread *glib_thread = g_thread_new("glib-main-loop", glib, NULL);
     locus_run(&app);
+    g_thread_join(glib_thread);
+    return 0;
 }
