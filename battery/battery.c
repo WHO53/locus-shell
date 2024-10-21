@@ -5,9 +5,11 @@
 #include "cairo.h"
 #include "glib-object.h"
 #include "glib.h"
+#include "../main.h"
+#include "locus.h"
 
-guint state;
-gdouble percentage;
+static guint state;
+static gdouble percentage;
 
 static void on_battery_changed(UpDevice *device, GParamSpec *pspec) {
     g_object_get(device, 
@@ -16,9 +18,11 @@ static void on_battery_changed(UpDevice *device, GParamSpec *pspec) {
             NULL);
 
     fprintf(stderr, "%.2f%%, state: %d\n", percentage, state);
+    locus_set_partial_draw_callback(&app, draw_battery_icon);
+    locus_req_partial_redraw(&app, (app.width * 5) / 100, (app.height * 8) / 100, 100, 50);
 }
 
-void battery() {
+void init_battery() {
     UpClient *client = NULL;
     UpDevice *device = NULL;
 
@@ -37,4 +41,13 @@ void battery() {
 }
 
 void draw_battery_icon(cairo_t *cr, int x, int y, int width, int height) {
+    cairo_set_line_width(cr, 2);
+    if (state == 2 ) {
+        cairo_set_source_rgba(cr, 1, 1, 1, 1);
+    } else {
+        cairo_set_source_rgba(cr, 1, 1, 0, 1);
+    }
+    cairo_rectangle(cr, x, y, width, height);
+    cairo_stroke(cr);
+    fprintf(stderr, "%.2f%%\n", percentage);
 }
