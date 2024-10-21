@@ -12,6 +12,8 @@ void draw_status_bar(cairo_t *cr, int width, int height){
     cairo_set_source_rgba(cr, 0, 0, 0, 1);
     cairo_rectangle(cr, 0, 0, width, height);
     cairo_fill(cr);
+    draw_wifi_icon(cr, app.width * 3 / 100, app.height * 75 / 100, app.width * 1 / 100, app.height * 10 / 100);
+    draw_battery_icon(cr, app.width * 95 / 100, app.height / 6, app.width * 4 / 100, app.height * 75 / 100);
 }
 
 void *glib(void *arg) {
@@ -19,6 +21,7 @@ void *glib(void *arg) {
     g_main_context_push_thread_default(context);
     GMainLoop *loop = g_main_loop_new(context, FALSE);
     init_battery();
+    init_wifi();
     g_main_loop_run(loop);
     g_main_loop_unref(loop);
     g_main_context_pop_thread_default(context);

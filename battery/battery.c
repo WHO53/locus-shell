@@ -46,14 +46,13 @@ void draw_battery_icon(cairo_t *cr, int x, int y, int width, int height) {
     cairo_set_line_width(cr, 2);
     if (percentage < 20) {
         cairo_set_source_rgba(cr, 1, 0, 0, 1);
+    } 
+    if (state == 1 ) {
+        cairo_set_source_rgba(cr, 0, 1, 0, 1);
+    } else if (state == 2){
+        cairo_set_source_rgba(cr, .5, .5, .5, 1);
     } else {
-        if (state == 1 ) {
-            cairo_set_source_rgba(cr, 0, 1, 0, 1);
-        } else if (state == 2){
-            cairo_set_source_rgba(cr, .5, .5, .5, 1);
-        } else {
-            cairo_set_source_rgba(cr, 1, 1, 0, 1);
-        }
+        cairo_set_source_rgba(cr, 1, 1, 0, 1);
     }
     cairo_rectangle(cr, x, y, width * percentage / 100, height);
     cairo_fill(cr);
