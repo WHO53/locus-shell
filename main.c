@@ -9,11 +9,9 @@
 Locus app;
 
 void draw_status_bar(cairo_t *cr, int width, int height){
-    cairo_set_source_rgba(cr, 0.1, 0.1, 0.1, 1);
+    cairo_set_source_rgba(cr, 0, 0, 0, 1);
     cairo_rectangle(cr, 0, 0, width, height);
     cairo_fill(cr);
-    draw_wifi_icon(cr, (width * 3) / 100, (height * 80) / 100, 10, 10);
-    draw_battery_icon(cr, (width * 5) / 100, (height * 8) / 100, 100, 50);
 }
 
 void *glib(void *arg) {

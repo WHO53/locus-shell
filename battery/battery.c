@@ -17,9 +17,8 @@ static void on_battery_changed(UpDevice *device, GParamSpec *pspec) {
             "state", &state,
             NULL);
 
-    fprintf(stderr, "%.2f%%, state: %d\n", percentage, state);
     locus_set_partial_draw_callback(&app, draw_battery_icon);
-    locus_req_partial_redraw(&app, (app.width * 5) / 100, (app.height * 8) / 100, 100, 50);
+    locus_req_partial_redraw(&app, app.width * 95 / 100, app.height / 6, app.width * 4 / 100, app.height * 75 / 100);
 }
 
 void init_battery() {
@@ -41,13 +40,32 @@ void init_battery() {
 }
 
 void draw_battery_icon(cairo_t *cr, int x, int y, int width, int height) {
-    cairo_set_line_width(cr, 2);
-    if (state == 2 ) {
-        cairo_set_source_rgba(cr, 1, 1, 1, 1);
-    } else {
-        cairo_set_source_rgba(cr, 1, 1, 0, 1);
-    }
+    cairo_set_source_rgba(cr, 0, 0, 0, 1);
     cairo_rectangle(cr, x, y, width, height);
+    cairo_fill(cr);
+    cairo_set_line_width(cr, 2);
+    if (percentage < 20) {
+        cairo_set_source_rgba(cr, 1, 0, 0, 1);
+    } else {
+        if (state == 1 ) {
+            cairo_set_source_rgba(cr, 0, 1, 0, 1);
+        } else if (state == 2){
+            cairo_set_source_rgba(cr, .5, .5, .5, 1);
+        } else {
+            cairo_set_source_rgba(cr, 1, 1, 0, 1);
+        }
+    }
+    cairo_rectangle(cr, x, y, width * percentage / 100, height);
+    cairo_fill(cr);
     cairo_stroke(cr);
-    fprintf(stderr, "%.2f%%\n", percentage);
+
+    cairo_select_font_face(cr, "Monofur Nerd Font", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
+    cairo_set_font_size(cr, height * 0.8);
+    char percentage_text[3];
+    snprintf(percentage_text, sizeof(percentage_text), "%f%%", percentage);
+    cairo_text_extents_t extents;
+    cairo_text_extents(cr, percentage_text, &extents);
+    cairo_set_source_rgba(cr, 1, 1, 1, 1);
+    cairo_move_to(cr, x + (width * percentage / 100 + extents.width) / 2, y + (height  - extents.height) / 2.5 + extents.height);
+    cairo_show_text(cr, percentage_text);
 }

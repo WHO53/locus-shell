@@ -7,7 +7,7 @@ PKGS = locus libnm upower-glib
 LOCUS_SHELL_SOURCES += $(wildcard $(SRC)/*.c) $(wildcard $(SRC)/**/*.c)
 LOCUS_SHELL_HEADERS += $(wildcard $(SRC)/*.h) $(wildcard $(SRC)/**/*.h)
 
-CFLAGS += -std=gnu99 -Wall -g
+CFLAGS += -std=gnu99 -Wall -g -Wno-format-truncation
 CFLAGS += $(shell pkg-config --cflags $(PKGS))
 LDFLAGS += $(shell pkg-config --libs $(PKGS)) -lm -lutil -lrt
 
