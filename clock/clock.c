@@ -19,7 +19,7 @@ static gboolean update_time(gpointer user_data) {
     current_minute = time_info->tm_min;
     
     locus_set_partial_draw_callback(&app, draw_clock);
-    locus_req_partial_redraw(&app, app.width * 38 / 100, app.height / 20, app.width * 25 / 100, app.height * 85 / 100 );
+    locus_req_partial_redraw(&app, app.width * 46 / 100, app.height / 20, app.width * 7 / 100, app.height * 85 / 100 );
     return G_SOURCE_CONTINUE;
 }
 
