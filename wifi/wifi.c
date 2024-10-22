@@ -14,13 +14,13 @@ static NMClient *g_client = NULL;
 static NMDeviceWifi *g_wifi_dev = NULL;
 
 static void on_wifi_properties_changed(NMDeviceWifi *wifi_dev, GParamSpec *pspec, gpointer user_data) {
-    locus_set_partial_draw_callback(&app, draw_wifi_icon);
+    locus_set_partial_draw_callback(&app, draw_wifi);
     locus_req_partial_redraw(&app, app.width * 3 / 100, app.height * 75 / 100, 
                             app.width * 1 / 100, app.height * 10 / 100);
 }
 
 static void on_wireless_enabled_changed(NMClient *client, GParamSpec *pspec, gpointer user_data) {
-    locus_set_partial_draw_callback(&app, draw_wifi_icon);
+    locus_set_partial_draw_callback(&app, draw_wifi);
     locus_req_partial_redraw(&app, app.width * 3 / 100, app.height * 75 / 100, 
                             app.width * 1 / 100, app.height * 10 / 100);
 }
@@ -78,7 +78,7 @@ static int get_wifi_str() {
     return 4;
 }
 
-void draw_wifi_icon(cairo_t *cr, int x, int y, int width, int height) {
+void draw_wifi(cairo_t *cr, int x, int y, int width, int height) {
     cairo_set_line_width(cr, 2.0);
     int str = get_wifi_str();
     for (int s = 0; s < 4; s++) {
