@@ -14,15 +14,15 @@ static NMClient *g_client = NULL;
 static NMDeviceWifi *g_wifi_dev = NULL;
 
 static void on_wifi_properties_changed(NMDeviceWifi *wifi_dev, GParamSpec *pspec, gpointer user_data) {
-    locus_set_partial_draw_callback(&app, draw_wifi);
-    locus_req_partial_redraw(&app, app.width * 3 / 100, app.height * 85 / 100, 
-                            app.width * 1 / 100, app.height * 10 / 100);
+    locus_set_partial_draw_callback(&status_bar, draw_wifi);
+    locus_req_partial_redraw(&status_bar, status_bar.width * 3 / 100, status_bar.height * 85 / 100, 
+                            status_bar.width * 1 / 100, status_bar.height * 10 / 100);
 }
 
 static void on_wireless_enabled_changed(NMClient *client, GParamSpec *pspec, gpointer user_data) {
-    locus_set_partial_draw_callback(&app, draw_wifi);
-    locus_req_partial_redraw(&app, app.width * 3 / 100, app.height * 75 / 100, 
-                            app.width * 1 / 100, app.height * 10 / 100);
+    locus_set_partial_draw_callback(&status_bar, draw_wifi);
+    locus_req_partial_redraw(&status_bar, status_bar.width * 3 / 100, status_bar.height * 75 / 100, 
+                            status_bar.width * 1 / 100, status_bar.height * 10 / 100);
 }
 
 void init_wifi() {
@@ -89,7 +89,7 @@ void draw_wifi(cairo_t *cr, int x, int y, int width, int height) {
         } else {
             cairo_set_source_rgba(cr, 0.5, 0.5, 0.5, 1);
         }
-        cairo_arc(cr, x, y, app.height * .17 * (s + 1), M_PI, 2 * M_PI);
+        cairo_arc(cr, x, y, status_bar.height * .17 * (s + 1), M_PI, 2 * M_PI);
         cairo_stroke(cr);
     }
 }

@@ -3,6 +3,6 @@
 
 #include <locus.h>
 
-extern Locus app;
+extern Locus status_bar;
 
 #endif // MAIN_H

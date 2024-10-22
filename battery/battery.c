@@ -17,8 +17,8 @@ static void on_battery_changed(UpDevice *device, GParamSpec *pspec) {
             "state", &state,
             NULL);
 
-    locus_set_partial_draw_callback(&app, draw_battery);
-    locus_req_partial_redraw(&app, app.width * 95 / 100, app.height / 6, app.width * 4 / 100, app.height * 75 / 100);
+    locus_set_partial_draw_callback(&status_bar, draw_battery);
+    locus_req_partial_redraw(&status_bar, status_bar.width * 95 / 100, status_bar.height / 6, status_bar.width * 4 / 100, status_bar.height * 75 / 100);
 }
 
 void init_battery() {
