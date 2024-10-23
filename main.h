@@ -4,6 +4,5 @@
 #include <locus.h>
 
 extern Locus status_bar;
-extern Locus status_panel;
 
 #endif // MAIN_H
