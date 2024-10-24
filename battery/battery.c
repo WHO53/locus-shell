@@ -43,28 +43,35 @@ void draw_battery(cairo_t *cr, int x, int y, int width, int height) {
     cairo_set_source_rgba(cr, 0, 0, 0, 1);
     cairo_rectangle(cr, x, y, width, height);
     cairo_fill(cr);
+
     cairo_set_line_width(cr, 2);
+
     if (percentage < 20) {
         cairo_set_source_rgba(cr, 1, 0, 0, 1);
     } 
-    if (state == 1 ) {
+    if (state == 1 || state == 4) {
         cairo_set_source_rgba(cr, 0, 1, 0, 1);
     } else if (state == 2){
-        cairo_set_source_rgba(cr, .5, .5, .5, 1);
+        cairo_set_source_rgba(cr, 0.5, 0.5, 0.5, 1);
     } else {
         cairo_set_source_rgba(cr, 1, 1, 0, 1);
     }
+
     cairo_rectangle(cr, x, y, width * percentage / 100, height);
     cairo_fill(cr);
     cairo_stroke(cr);
 
     cairo_select_font_face(cr, "Monofur Nerd Font", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
     cairo_set_font_size(cr, height * 0.9);
-    char percentage_text[3];
-    snprintf(percentage_text, sizeof(percentage_text), "%f%%", percentage);
+
+    char percentage_text[4];
+    snprintf(percentage_text, sizeof(percentage_text), "%.2f%%", percentage);
+
     cairo_text_extents_t extents;
     cairo_text_extents(cr, percentage_text, &extents);
+    double text_x = x + (width - extents.width) / 2;
+    double text_y = y + (height + extents.height) / 2;
     cairo_set_source_rgba(cr, 1, 1, 1, 1);
-    cairo_move_to(cr, x + (width * percentage / 100 + extents.width) / 5.5, y + (height  - extents.height) / 5.2 + extents.height);
+    cairo_move_to(cr, text_x, text_y);
     cairo_show_text(cr, percentage_text);
 }
