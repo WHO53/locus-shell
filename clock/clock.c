@@ -47,7 +47,7 @@ void draw_clock(cairo_t *cr, int x, int y, int width, int height) {
     snprintf(time_text, sizeof(time_text), "%02d:%02d", 
             current_hour, current_minute);
     
-    cairo_select_font_face(cr, "Monofur Nerd Font", 
+    cairo_select_font_face(cr, "Sans", 
             CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
     cairo_set_font_size(cr, height * 0.9);
     

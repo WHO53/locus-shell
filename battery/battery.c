@@ -61,10 +61,10 @@ void draw_battery(cairo_t *cr, int x, int y, int width, int height) {
     cairo_fill(cr);
     cairo_stroke(cr);
 
-    cairo_select_font_face(cr, "Monofur Nerd Font", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
+    cairo_select_font_face(cr, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
     cairo_set_font_size(cr, height * 0.9);
 
-    char percentage_text[4];
+    char percentage_text[3];
     snprintf(percentage_text, sizeof(percentage_text), "%.2f%%", percentage);
 
     cairo_text_extents_t extents;

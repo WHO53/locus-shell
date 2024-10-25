@@ -21,7 +21,7 @@ static void on_wifi_properties_changed(NMDeviceWifi *wifi_dev, GParamSpec *pspec
 
 static void on_wireless_enabled_changed(NMClient *client, GParamSpec *pspec, gpointer user_data) {
     locus_set_partial_draw_callback(&status_bar, draw_wifi);
-    locus_req_partial_redraw(&status_bar, status_bar.width * 3 / 100, status_bar.height * 75 / 100, 
+    locus_req_partial_redraw(&status_bar, status_bar.width * 3 / 100, status_bar.height * 85 / 100, 
                             status_bar.width * 1 / 100, status_bar.height * 10 / 100);
 }
 
