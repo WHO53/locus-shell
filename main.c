@@ -34,7 +34,7 @@ void *glib(void *arg) {
 
 int main(int argc, char *argv[]){
     locus_init(&status_bar, 100, 2);
-    locus_create_layer_surface(&status_bar, ZWLR_LAYER_SHELL_V1_LAYER_TOP, ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP, 1);
+    locus_create_layer_surface(&status_bar, "locus-shell", ZWLR_LAYER_SHELL_V1_LAYER_TOP, ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP, 1);
     locus_set_draw_callback(&status_bar, draw_status_bar);
     GThread *glib_thread = g_thread_new("glib-main-loop", glib, NULL);
     locus_run(&status_bar);
