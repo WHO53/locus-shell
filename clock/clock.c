@@ -18,8 +18,7 @@ static gboolean update_time(gpointer user_data) {
     current_hour = time_info->tm_hour;
     current_minute = time_info->tm_min;
     
-    locus_set_partial_draw_callback(&app, draw_clock);
-    locus_req_partial_redraw(&app, app.width * 0.44, app.height * 0.005, app.width / 10, app.height * 0.99);
+    app.redraw = 1;
     return G_SOURCE_CONTINUE;
 }
 
@@ -39,17 +38,13 @@ void init_clock() {
 }
 
 void draw_clock(cairo_t *cr, int x, int y, int width, int height) {
-    cairo_set_source_rgba(cr, 0, 0, 0, 1);
-    cairo_rectangle(cr, x, y, width, height);
-    cairo_fill(cr);
-    
     char time_text[6];
     snprintf(time_text, sizeof(time_text), "%02d:%02d", 
             current_hour, current_minute);
     
-    cairo_select_font_face(cr, "Monofur Nerd Font", 
+    cairo_select_font_face(cr, "Monofur Nerd Font Mono", 
             CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
-    cairo_set_font_size(cr, height * 0.9);
+    cairo_set_font_size(cr, height);
     
     cairo_text_extents_t extents;
     cairo_text_extents(cr, time_text, &extents);
@@ -57,6 +52,6 @@ void draw_clock(cairo_t *cr, int x, int y, int width, int height) {
     cairo_set_source_rgba(cr, 1, 1, 1, 1);
     cairo_move_to(cr, 
             x + (width - extents.width) / 2,
-            y + (height - extents.height) / 2 + extents.height);
+            y + (height - extents.height) / 3 + extents.height);
     cairo_show_text(cr, time_text);
 }
