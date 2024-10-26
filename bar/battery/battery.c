@@ -1,13 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <upower.h>
-#include "battery.h"
-#include "cairo.h"
-#include "glib-object.h"
-#include "glib.h"
-#include "../main.h"
-#include "../svg.h"
-#include "locus.h"
+#include <locus.h>
+#include <glib-object.h>
+#include <glib.h>
+#include "../bar.h"
 
 static guint state;
 static gdouble percentage;
@@ -18,7 +15,7 @@ static void on_battery_changed(UpDevice *device, GParamSpec *pspec) {
             "state", &state,
             NULL);
 
-    app.redraw = 1;
+    bar.redraw = 1;
 }
 
 void init_battery() {
@@ -90,7 +87,7 @@ void draw_battery(cairo_t *cr, int x, int y, int width, int height) {
         }
     }
 
-    draw_svg_icon(cr, x, y, icon_name, width, height);
+    draw_bar_svg_icon(cr, x, y, icon_name, width, height);
 
     char percentage_text[16];
     if (percentage == 100) {

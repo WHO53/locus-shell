@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include "clock.h"
-#include <cairo.h>
-#include <glib.h>
-#include "../main.h"
 #include <locus.h>
+#include <glib.h>
+#include "../bar.h"
 
 static int current_hour = -1;
 static int current_minute = -1;
@@ -18,7 +16,7 @@ static gboolean update_time(gpointer user_data) {
     current_hour = time_info->tm_hour;
     current_minute = time_info->tm_min;
     
-    app.redraw = 1;
+    bar.redraw = 1;
     return G_SOURCE_CONTINUE;
 }
 

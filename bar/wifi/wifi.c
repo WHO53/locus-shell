@@ -1,25 +1,22 @@
 #include <stdio.h>
 #include <NetworkManager.h>
 #include <nm-utils.h>
-#include <cairo.h>
+#include <locus.h>
 #include <string.h>
-#include "wifi.h"
-#include "../main.h"
-#include "../svg.h"
-#include "glib-object.h"
-#include "glib.h"
-#include "glibconfig.h"
-#include "locus.h"
+#include "../bar.h"
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
 
 static NMClient *g_client = NULL;
 static NMDeviceWifi *g_wifi_dev = NULL;
 
 static void on_wifi_properties_changed(NMDeviceWifi *wifi_dev, GParamSpec *pspec, gpointer user_data) {
-    app.redraw = 1;
+    bar.redraw = 1;
 }
 
 static void on_wireless_enabled_changed(NMClient *client, GParamSpec *pspec, gpointer user_data) {
-    app.redraw = 1;
+    bar.redraw = 1;
 }
 
 void init_wifi() {
@@ -94,6 +91,6 @@ void draw_wifi(cairo_t *cr, int x, int y, int width, int height) {
     }
 
     if (icon_name != NULL) {
-        draw_svg_icon(cr, x, y, icon_name, width, height);
+        draw_bar_svg_icon(cr, x, y, icon_name, width, height);
     }
 }
