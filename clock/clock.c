@@ -44,7 +44,7 @@ void draw_clock(cairo_t *cr, int x, int y, int width, int height) {
     
     cairo_select_font_face(cr, "Monofur Nerd Font Mono", 
             CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
-    cairo_set_font_size(cr, height);
+    cairo_set_font_size(cr, height * 0.95);
     
     cairo_text_extents_t extents;
     cairo_text_extents(cr, time_text, &extents);
