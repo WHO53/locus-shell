@@ -22,6 +22,12 @@ $(OBJECTS): $(LOCUS_SHELL_HEADERS)
 $(BIN):$(OBJECTS)
 	$(CC) -o $(BIN) $(OBJECTS) $(LDFLAGS)
 
+install: ${BIN}
+	install -m 755 $(BIN) /usr/bin/
+
+uninstall: $(BIN)
+	rm -rf /usr/bin/$(BIN)
+
 clean:
 	rm -f $(OBJECTS) ${BIN}
 
