@@ -28,7 +28,7 @@ void *glib(void *arg) {
     return NULL;
 }
 
-int file_exists(const char *path) {
+int icon_file_exists(const char *path) {
     FILE *file = fopen(path, "r");
     if (file) {
         fclose(file);
@@ -37,7 +37,7 @@ int file_exists(const char *path) {
     return 0;
 }
 
-char *find_icon(const char *icon_name) {
+char *find_bar_icon(const char *icon_name) {
     static char path[1024];
     const char *icon_dirs[] = {
         "/home/droidian/temp/Fluent-grey-dark/symbolic/status/",
@@ -49,18 +49,18 @@ char *find_icon(const char *icon_name) {
     
     for (int i = 0; icon_dirs[i] != NULL; ++i) {
         snprintf(path, sizeof(path), "%s%s.png", icon_dirs[i], icon_name);
-        if (file_exists(path)) return path;
+        if (icon_file_exists(path)) return path;
         snprintf(path, sizeof(path), "%s%s.svg", icon_dirs[i], icon_name);
-        if (file_exists(path)) return path;
+        if (icon_file_exists(path)) return path;
         snprintf(path, sizeof(path), "%s%s-symbolic.svg", icon_dirs[i], icon_name);
-        if (file_exists(path)) return path;
+        if (icon_file_exists(path)) return path;
     }
 
     return NULL;
 }
 
 void draw_bar_svg_icon(cairo_t *cr, int x, int y, const char *icon_name, int width, int height) {
-    char *icon_path = find_icon(icon_name);
+    char *icon_path = find_bar_icon(icon_name);
     cairo_surface_t *icon_surface = NULL;
 
     if (icon_path != NULL) {
