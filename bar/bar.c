@@ -11,7 +11,7 @@ void draw_bar(cairo_t *cr, int width, int height){
     cairo_fill(cr);
     draw_wifi(cr, width * 0.85 , height * 0.005, width / 10, height * 0.99);
     draw_battery(cr, width * 0.89, height * 0.115, width / 10 , height * 0.99);
-    draw_clock(cr, width * 0.45, height * 0.005, width / 10, height * 0.99);
+    draw_clock(cr, width * 0.45, height * 0.115, width / 10, height * 0.99);
 }
 
 void *glib(void *arg) {
