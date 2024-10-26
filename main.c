@@ -8,7 +8,7 @@
 Locus app;
 
 void draw_bar(cairo_t *cr, int width, int height){
-    cairo_set_source_rgba(cr, 0.2, 0.9, 0.5, 0.5);
+    cairo_set_source_rgba(cr, 0.97, 0.33, 0.29, 0.9);
     cairo_rectangle(cr, 0, 0, width, height);
     cairo_fill(cr);
     draw_wifi(cr, width * 0.87 , height * 0.005, width / 10, height * 0.99);
