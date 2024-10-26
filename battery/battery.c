@@ -93,7 +93,11 @@ void draw_battery(cairo_t *cr, int x, int y, int width, int height) {
     draw_svg_icon(cr, x, y, icon_name, width, height);
 
     char percentage_text[16];
-    snprintf(percentage_text, sizeof(percentage_text), "%.0f%%", percentage);
+    if (percentage == 100) {
+        snprintf(percentage_text, sizeof(percentage_text), "%.0f", percentage);
+    } else {
+        snprintf(percentage_text, sizeof(percentage_text), "%.0f%%", percentage);
+    }
     cairo_select_font_face(cr, "Monofur Nerd Font", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size(cr, height * 0.80);
     cairo_set_source_rgb(cr, 1, 1, 1);
