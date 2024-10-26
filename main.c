@@ -12,7 +12,7 @@ void draw_bar(cairo_t *cr, int width, int height){
     cairo_rectangle(cr, 0, 0, width, height);
     cairo_fill(cr);
     draw_wifi(cr, width * 0.87 , height * 0.005, width / 10, height * 0.99);
-    draw_battery(cr, width * 0.92, height * 0.005, width / 10 , height * 0.99);
+    draw_battery(cr, width * 0.92, height * 0.115, width / 10 , height * 0.99);
     draw_clock(cr, width * 0.45, height * 0.005, width / 10, height * 0.99);
 }
 
