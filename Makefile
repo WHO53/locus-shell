@@ -7,7 +7,7 @@ PKGS = locus librsvg-2.0 libnm upower-glib
 LOCUS_SHELL_SOURCES += $(wildcard $(SRC)/*.c) $(wildcard $(SRC)/**/*.c) $(wildcard $(SRC)/***/**/*.c) 
 LOCUS_SHELL_HEADERS += $(wildcard $(SRC)/*.h) $(wildcard $(SRC)/**/*.h) $(wildcard $(SRC)/***/**/*.h)
 
-CFLAGS += -std=gnu99 -Wall -g -Wno-format-truncation
+CFLAGS += -std=gnu99 -Wall -g
 CFLAGS += $(shell pkg-config --cflags $(PKGS))
 LDFLAGS += $(shell pkg-config --libs $(PKGS)) -lm -lutil -lrt
 

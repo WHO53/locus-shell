@@ -2,6 +2,7 @@
 #include <string.h>
 #include <time.h>
 #include <locus.h>
+#include <locus-ui.h>
 #include <glib.h>
 #include "../bar.h"
 
@@ -40,16 +41,6 @@ void draw_clock(cairo_t *cr, int x, int y, int width, int height) {
     snprintf(time_text, sizeof(time_text), "%02d:%02d", 
             current_hour, current_minute);
     
-    cairo_select_font_face(cr, "Monofur Nerd Font Mono", 
-            CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
-    cairo_set_font_size(cr, height * 0.95);
-    
-    cairo_text_extents_t extents;
-    cairo_text_extents(cr, time_text, &extents);
-    
     cairo_set_source_rgba(cr, 1, 1, 1, 1);
-    cairo_move_to(cr, 
-            x + (width - extents.width) / 2,
-            y + (height - extents.height) / 3 + extents.height);
-    cairo_show_text(cr, time_text);
+    locus_text(cr, time_text, x, y, width, height, NORMAL);
 }

@@ -2,6 +2,7 @@
 #include <NetworkManager.h>
 #include <nm-utils.h>
 #include <locus.h>
+#include <locus-ui.h>
 #include <string.h>
 #include "../bar.h"
 #include <glib-object.h>
@@ -91,6 +92,6 @@ void draw_wifi(cairo_t *cr, int x, int y, int width, int height) {
     }
 
     if (icon_name != NULL) {
-        draw_bar_svg_icon(cr, x, y, icon_name, width, height);
+        locus_icon(cr, x, y, icon_name, width, height);
     }
 }
