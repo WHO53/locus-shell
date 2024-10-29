@@ -78,17 +78,17 @@ void draw_wifi(cairo_t *cr, int x, int y, int width, int height) {
     const char *icon_name = NULL;
 
     if (str == -1) {
-        icon_name = "network-wireless-offline";
+        icon_name = "network-wireless-offline-symbolic";
     } else if (str == 0) {
-        icon_name = "network-wireless-signal-none";
+        icon_name = "network-wireless-signal-none-symbolic";
     } else if (str == 1) {
-        icon_name = "network-wireless-signal-weak";
+        icon_name = "network-wireless-signal-weak-symbolic";
     } else if (str == 2) {
-        icon_name = "network-wireless-signal-ok";
+        icon_name = "network-wireless-signal-ok-symbolic";
     } else if (str == 3) {
-        icon_name = "network-wireless-signal-good";
+        icon_name = "network-wireless-signal-good-symbolic";
     } else if (str == 4) {
-        icon_name = "network-wireless-signal-excellent";
+        icon_name = "network-wireless-signal-excellent-symbolic";
     }
 
     if (icon_name != NULL) {

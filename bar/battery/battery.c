@@ -42,50 +42,50 @@ void draw_battery(cairo_t *cr, int x, int y, int width, int height) {
     const char *icon_name;
 
     if (percentage < 0 || percentage > 100) {
-        icon_name = "battery-missing";
+        icon_name = "battery-missing-symbolic";
     } else if (state == 1 || state == 4) {
         if (percentage >= 90) {
-            icon_name = "battery-level-100-charged";
+            icon_name = "battery-level-100-charged-symbolic";
         } else if (percentage >= 80) {
-            icon_name = "battery-level-90-charging";
+            icon_name = "battery-level-90-charging-symbolic";
         } else if (percentage >= 70) {
-            icon_name = "battery-level-80-charging";
+            icon_name = "battery-level-80-charging-symbolic";
         } else if (percentage >= 60) {
-            icon_name = "battery-level-70-charging";
+            icon_name = "battery-level-70-charging-symbolic";
         } else if (percentage >= 50) {
-            icon_name = "battery-level-60-charging";
+            icon_name = "battery-level-60-charging-symbolic";
         } else if (percentage >= 40) {
-            icon_name = "battery-level-50-charging";
+            icon_name = "battery-level-50-charging-symbolic";
         } else if (percentage >= 30) {
-            icon_name = "battery-level-40-charging";
+            icon_name = "battery-level-40-charging-symbolic";
         } else if (percentage >= 20) {
-            icon_name = "battery-level-30-charging";
+            icon_name = "battery-level-30-charging-symbolic";
         } else if (percentage >= 10) {
-            icon_name = "battery-level-20-charging";
+            icon_name = "battery-level-20-charging-symbolic";
         } else if (percentage >= 0) {
-            icon_name = "battery-level-10-charging";
+            icon_name = "battery-level-10-charging-symbolic";
         }
     } else {
         if (percentage >= 90) {
-            icon_name = "battery-level-100";
+            icon_name = "battery-level-100-symbolic";
         } else if (percentage >= 80) {
-            icon_name = "battery-level-90";
+            icon_name = "battery-level-90-symbolic";
         } else if (percentage >= 70) {
-            icon_name = "battery-level-80";
+            icon_name = "battery-level-80-symbolic";
         } else if (percentage >= 60) {
-            icon_name = "battery-level-70";
+            icon_name = "battery-level-70-symbolic";
         } else if (percentage >= 50) {
-            icon_name = "battery-level-60";
+            icon_name = "battery-level-60-symbolic";
         } else if (percentage >= 40) {
-            icon_name = "battery-level-50";
+            icon_name = "battery-level-50-symbolic";
         } else if (percentage >= 30) {
-            icon_name = "battery-level-40";
+            icon_name = "battery-level-40-symbolic";
         } else if (percentage >= 20) {
-            icon_name = "battery-level-30";
+            icon_name = "battery-level-30-symbolic";
         } else if (percentage >= 10) {
-            icon_name = "battery-level-20";
+            icon_name = "battery-level-20-symbolic";
         } else if (percentage >= 0) {
-            icon_name = "battery-level-10";
+            icon_name = "battery-level-10-symbolic";
         }
     }
 
