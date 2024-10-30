@@ -98,5 +98,5 @@ void draw_battery(cairo_t *cr, int x, int y, int width, int height) {
         snprintf(percentage_text, sizeof(percentage_text), "%.0f%%", percentage);
     }
     cairo_set_source_rgba(cr, 1, 1, 1, 1);
-    locus_text(cr, percentage_text, x - (width * 0.01), y + (height * 0.030), width, width * 0.60, NORMAL);
+    locus_text(cr, percentage_text, x + ( width * 0.37) , y * 0.85, width, height * 0.85, NORMAL);
 }

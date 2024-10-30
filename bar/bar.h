@@ -17,8 +17,5 @@ void draw_clock(cairo_t *cr, int x, int y, int width, int height);
 void init_wifi();
 void draw_wifi(cairo_t *cr, int x, int y, int width, int height);
 
-void init_brightness();
-void draw_brightness(cairo_t *cr, int x, int y, int width, int height);
-
 #endif // BAR_H
 

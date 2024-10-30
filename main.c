@@ -7,15 +7,14 @@
 Locus *instance[] = {&bar, &launcher};
 
 int main(int argc, char *argv[]){
-    locus_init(&bar, 8, 100);
-    bar.state = 0;
-    locus_create_layer_surface(&bar, "locus-sidebar", ZWLR_LAYER_SHELL_V1_LAYER_TOP, ZWLR_LAYER_SURFACE_V1_ANCHOR_LEFT, 0);
+    locus_init(&bar, 100, 2);
+    locus_create_layer_surface(&bar, "locus-sidebar", ZWLR_LAYER_SHELL_V1_LAYER_TOP, ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP, 1);
     locus_set_draw_callback(&bar, draw_bar);
     GThread *glib_thread = g_thread_new("glib-main-loop", glib, NULL);
 
 
     locus_init(&launcher, 100, 100);
-    locus_create_layer_surface(&launcher, "locus-launcher", ZWLR_LAYER_SHELL_V1_LAYER_BOTTOM, ZWLR_LAYER_SURFACE_V1_ANCHOR_RIGHT, 0);
+    locus_create_layer_surface(&launcher, "locus-launcher", ZWLR_LAYER_SHELL_V1_LAYER_BOTTOM, 0, 0);
     locus_set_draw_callback(&launcher, draw_launcher);
     locus_set_touch_callback(&launcher, touch_launcher);
     launcher_init();
