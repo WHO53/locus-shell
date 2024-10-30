@@ -37,10 +37,15 @@ void init_clock() {
 }
 
 void draw_clock(cairo_t *cr, int x, int y, int width, int height) {
-    char time_text[6];
-    snprintf(time_text, sizeof(time_text), "%02d:%02d", 
-            current_hour, current_minute);
+    char hour_text[3];  
+    char minute_text[3]; 
+
+    snprintf(hour_text, sizeof(hour_text), "%02d", current_hour);
+    snprintf(minute_text, sizeof(minute_text), "%02d", current_minute);
+
+    cairo_set_source_rgba(cr, 1, 1, 1, 1); 
+
+    locus_text(cr, hour_text, x, y, width, width * 0.70, NORMAL);  
     
-    cairo_set_source_rgba(cr, 1, 1, 1, 1);
-    locus_text(cr, time_text, x, y, width, height, NORMAL);
+    locus_text(cr, minute_text, x, y + (width * 0.60), width, width * 0.70, NORMAL);  
 }
