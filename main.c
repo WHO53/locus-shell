@@ -13,8 +13,8 @@ int main(int argc, char *argv[]){
     GThread *glib_thread = g_thread_new("glib-main-loop", glib, NULL);
 
 
-    locus_init(&launcher, 100, 100);
-    locus_create_layer_surface(&launcher, "locus-launcher", ZWLR_LAYER_SHELL_V1_LAYER_BOTTOM, 0, 0);
+    locus_init(&launcher, 100, 98);
+    locus_create_layer_surface(&launcher, "locus-launcher", ZWLR_LAYER_SHELL_V1_LAYER_BOTTOM, ZWLR_LAYER_SURFACE_V1_ANCHOR_BOTTOM, 0);
     locus_set_draw_callback(&launcher, draw_launcher);
     locus_set_touch_callback(&launcher, touch_launcher);
     launcher_init();

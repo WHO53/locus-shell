@@ -1,1 +1,1 @@
-![locus-shell-_-bar](https://github.com/user-attachments/assets/1f3ef55a-60a6-42ff-a7c9-5098100ba323)
+![locus-shell-_-bar](https://github.com/user-attachments/assets/ee989dd1-8d73-47a1-95f5-0a0d2eef3b30)

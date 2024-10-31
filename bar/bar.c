@@ -7,8 +7,8 @@
 Locus bar;
 
 void draw_bar(cairo_t *cr, int width, int height){
-    cairo_set_source_rgba(cr, 0.97, 0.33, 0.29, 0.9);
-    locus_rectangle(cr, width * 0.50, height * 0.50, width, height, 25, 0);
+    locus_color(cr, 52, 193, 116, 1);
+    locus_rectangle(cr, width * 0.50, height * 0.50, width, height, 0, 0);
     draw_wifi(cr, width * 0.90 , height * 0.50, width * .10, height * 0.99);
     draw_battery(cr, width * 0.94, height * 0.60, width * 0.10 , height * 0.99);
     draw_clock(cr, width * 0.50, height * 0.50, width * .10, height * 0.99);
