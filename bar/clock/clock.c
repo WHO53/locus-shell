@@ -42,5 +42,5 @@ void draw_clock(cairo_t *cr, int x, int y, int width, int height) {
             current_hour, current_minute);
     
     cairo_set_source_rgba(cr, 1, 1, 1, 1);
-    locus_text(cr, time_text, x, y, width, height, NORMAL);
+    locus_text(cr, time_text, x, y, height, BOLD);
 }

@@ -135,7 +135,16 @@ void process_desktop_directory() {
 void draw_icon_with_label(cairo_t *cr, int x, int y, const char *name, const char *icon_name) {
     locus_icon(cr, x, y, icon_name, app_icon_size, app_icon_size);
     cairo_set_source_rgba(cr, 1, 1, 1, 1);
-    locus_text(cr, name, x, y + (app_icon_size * .60), 0, APP_TEXT_HEIGHT, BOLD);
+    char display_name[14]; 
+    if (strlen(name) > 11) {
+        strncpy(display_name, name, 11);
+        display_name[11] = '.'; 
+        display_name[12] = '.'; 
+        display_name[13] = '\0'; 
+    } else {
+        strncpy(display_name, name, sizeof(display_name));
+    }
+    locus_text(cr, display_name, x, y + (app_icon_size * .60), APP_TEXT_HEIGHT, BOLD);
 }
 
 int compare_apps(const void *a, const void *b) {
